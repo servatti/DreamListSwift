@@ -6,4 +6,7 @@ target 'DreamList' do
     pod 'Alamofire', '~> 4.0'
     pod 'SDWebImage', '~>3.8'
     pod 'AlamofireObjectMapper'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
 end
