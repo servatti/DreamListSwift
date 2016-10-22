@@ -56,10 +56,13 @@ class StoresViewController: UIViewController,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Products", sender: indexPath)
+        let store = stores![indexPath.row]
+        
+        performSegue(withIdentifier: "Products", sender: store)
     }
     
     // MARK: - Internal
+    
     func loadStores() {
         Alamofire.request(Router.loadStores())
             .validate().responseArray { (response: DataResponse<[StoreEntity]>) in
@@ -73,6 +76,14 @@ class StoresViewController: UIViewController,
                     Manager.sharedInstance.showAlert(message: error.localizedDescription)
                     break
                 }
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let productsVC = segue.destination as? ProductsViewController {
+            productsVC.store = sender as? StoreEntity
         }
     }
 }

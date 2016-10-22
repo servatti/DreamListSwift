@@ -13,7 +13,6 @@ class StoreEntity: NSObject, Mappable {
     var name: String?
     var url: String?
     var wishes: Int = 0
-    var storeURL: String?
     
     // MARK: - Override
     required init?(map: Map) {
@@ -21,9 +20,8 @@ class StoreEntity: NSObject, Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        name <- map["title"]
+        name <- map["name"]
         url <- map["url"]
         wishes <- map["wishes"]
-        storeURL <- map["url"]
     }
 }

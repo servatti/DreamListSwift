@@ -1,0 +1,14 @@
+{
+	"products": [
+		{ "id": 1, "name": "Product A", "vendor": "Amazon", "price":"159.99", "url": "https://commons.wikimedia.org/wiki/File:Celular_samsung.jpg", "wishes":112, "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Celular_samsung.jpg", "is_wished":1 },
+		{ "id": 2, "name": "Product B" }
+	],
+	"stores": [
+		{ "id": 1, "name": "Amazon", "url": "http://www.amazon.com", "wishes": 450 },
+		{ "id": 2, "name": "eBay", "url": "http://www.ebay.com", "wishes": 6320 },
+		{ "id": 3, "name": "Walmart", "url": "http://www.walmart.com", "wishes": 6320 }
+	],
+	"wishlist": [
+		{ "id": 1, "name": "Product A", "vendor": "Amazon", "price":"159.99", "url": "https://commons.wikimedia.org/wiki/File:Celular_samsung.jpg", "wishes":112, "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Celular_samsung.jpg", "is_wished":1 }
+	]
+}

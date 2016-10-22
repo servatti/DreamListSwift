@@ -16,6 +16,7 @@ class ProductEntity: NSObject, Mappable {
     var url: String?
     var wishes: Int = 0
     var imageURL: String?
+    var isWished: Bool = false
     
     // MARK: - Override
     required init?(map: Map) {
@@ -23,6 +24,12 @@ class ProductEntity: NSObject, Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        name <- map ["title"]
+        name <- map["name"]
+        vendor <- map["vendor"]
+        price <- map["price"]
+        url <- map["price"]
+        wishes <- map["wishes"]
+        imageURL <- map["image_url"]
+        isWished <- map["is_wished"]
     }
 }

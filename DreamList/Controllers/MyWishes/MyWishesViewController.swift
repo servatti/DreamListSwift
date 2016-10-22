@@ -10,4 +10,9 @@ import UIKit
 
 class MyWishesViewController: ProductsViewController {
     
+    // MARK: - Override
+    override func currentEndpoint() -> Router {
+        return Router.loadWishlist()
+    }
+    
 }

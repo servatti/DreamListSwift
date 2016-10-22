@@ -20,6 +20,7 @@ class ProductsViewController: UIViewController,
     let cellIdentifier = "ProductCell"
     
     var products: [ProductEntity]?
+    var store: StoreEntity?
     
     // MARK: - View Life Cycle
     
@@ -37,7 +38,7 @@ class ProductsViewController: UIViewController,
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ProductViewCell
         let product = products![indexPath.row]
         
-        cell.setupCell(productId: product.id, productName: product.name, vendor: product.vendor, wishes: product.wishes, imageURL: product.imageURL)
+        cell.setupCell(productId: product.id, productName: product.name, vendor: product.vendor, wishes: product.wishes, imageURL: product.imageURL, price: product.price)
         
         return cell
     }
@@ -57,7 +58,9 @@ class ProductsViewController: UIViewController,
     // MARK: - Internal
     
     func loadProducts() {
-        Alamofire.request(Router.loadProducts())
+        let endpoint = currentEndpoint()
+        
+        Alamofire.request(endpoint)
             .validate().responseArray { (response: DataResponse<[ProductEntity]>) in
                 
                 switch response.result {
@@ -72,7 +75,15 @@ class ProductsViewController: UIViewController,
             }
     }
     
+    func currentEndpoint() -> Router {
+        return (store == nil ? Router.loadProducts() : Router.loadStoreProducts(storeId: store!.id))
+    }
+    
     func setup() {
         tableView.register(UINib(nibName: "ProductViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
+        if let store = store {
+            navigationItem.title = store.name
+        }
     }
 }
