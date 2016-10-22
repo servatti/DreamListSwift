@@ -8,15 +8,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="400" id="mwE-RL-Vo5">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="400" id="mwE-RL-Vo5" customClass="ProductViewCell" customModule="DreamList" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mwE-RL-Vo5" id="M6m-lI-UPp">
-                <frame key="frameInset" width="375" height="400"/>
+                <frame key="frameInset" width="375" height="399"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ub5-1f-a3b">
-                        <color key="backgroundColor" red="0.19427719712257385" green="0.74914950132369995" blue="0.51107245683670044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ub5-1f-a3b">
                         <constraints>
                             <constraint firstAttribute="height" constant="275" id="ECT-cz-PTd"/>
                         </constraints>
@@ -44,6 +43,9 @@
                             <constraint firstAttribute="width" constant="30" id="CvY-G7-Dcf"/>
                             <constraint firstAttribute="height" constant="30" id="N7d-Po-DM5"/>
                         </constraints>
+                        <connections>
+                            <action selector="wishesDidTapWithSender:" destination="mwE-RL-Vo5" eventType="touchUpInside" id="1Jj-Db-zf1"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[store's name]" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6Z-MY-1dK">
                         <constraints>
@@ -70,6 +72,12 @@
                     <constraint firstItem="J6Z-MY-1dK" firstAttribute="top" secondItem="ub5-1f-a3b" secondAttribute="bottom" constant="8" id="tSN-oM-DU1"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="xO6-wF-b0N" id="BFx-IE-VZo"/>
+                <outlet property="productImageView" destination="ub5-1f-a3b" id="eR4-WW-4JR"/>
+                <outlet property="vendorLabel" destination="J6Z-MY-1dK" id="xZi-Xs-r9z"/>
+                <outlet property="wishesLabel" destination="yeh-8y-DKp" id="FWD-Te-JMW"/>
+            </connections>
             <point key="canvasLocation" x="282.5" y="116"/>
         </tableViewCell>
     </objects>

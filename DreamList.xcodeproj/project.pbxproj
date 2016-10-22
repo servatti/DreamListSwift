@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530A73A79114D5A45AE163A2 /* Pods_DreamList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546B6A271135FF0B6F7F0E8F /* Pods_DreamList.framework */; };
 		FEC67D0E1DBB1EC400E7AAAB /* DreamListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D0D1DBB1EC400E7AAAB /* DreamListTests.swift */; };
 		FEC67D281DBB1F6800E7AAAB /* DreamList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D1D1DBB1F6800E7AAAB /* DreamList.xcdatamodeld */; };
 		FEC67D291DBB1F6800E7AAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC67D201DBB1F6800E7AAAB /* Assets.xcassets */; };
@@ -18,6 +19,11 @@
 		FEC67D4D1DBB2E1100E7AAAB /* MyWishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D4C1DBB2E1100E7AAAB /* MyWishesViewController.swift */; };
 		FEC67D521DBB30E200E7AAAB /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D501DBB30E200E7AAAB /* ProductsViewController.swift */; };
 		FEC67D541DBB30FB00E7AAAB /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D531DBB30FB00E7AAAB /* StoresViewController.swift */; };
+		FEC67D581DBB98A600E7AAAB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FEC67D571DBB98A600E7AAAB /* Podfile */; };
+		FEC67D5D1DBBA60100E7AAAB /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D5C1DBBA60100E7AAAB /* ProductEntity.swift */; };
+		FEC67D5F1DBBA60D00E7AAAB /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D5E1DBBA60D00E7AAAB /* ProductModel.swift */; };
+		FEC67D641DBBA8C400E7AAAB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D631DBBA8C400E7AAAB /* Router.swift */; };
+		FEC67D671DBBB1FC00E7AAAB /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D661DBBB1FC00E7AAAB /* Manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45F7D8A34ACBDC44B9762537 /* Pods-DreamList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DreamList/Pods-DreamList.debug.xcconfig"; sourceTree = "<group>"; };
+		546B6A271135FF0B6F7F0E8F /* Pods_DreamList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A080AC9264A313BA741CC3 /* Pods-DreamList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamList.release.xcconfig"; path = "Pods/Target Support Files/Pods-DreamList/Pods-DreamList.release.xcconfig"; sourceTree = "<group>"; };
 		FEC67CF21DBB1EC400E7AAAB /* DreamList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC67D041DBB1EC400E7AAAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEC67D091DBB1EC400E7AAAB /* DreamListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DreamListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +55,11 @@
 		FEC67D4C1DBB2E1100E7AAAB /* MyWishesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWishesViewController.swift; sourceTree = "<group>"; };
 		FEC67D501DBB30E200E7AAAB /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		FEC67D531DBB30FB00E7AAAB /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
+		FEC67D571DBB98A600E7AAAB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		FEC67D5C1DBBA60100E7AAAB /* ProductEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
+		FEC67D5E1DBBA60D00E7AAAB /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		FEC67D631DBBA8C400E7AAAB /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		FEC67D661DBBB1FC00E7AAAB /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				530A73A79114D5A45AE163A2 /* Pods_DreamList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +81,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C27016FA60B1FDC1DD720C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				45F7D8A34ACBDC44B9762537 /* Pods-DreamList.debug.xcconfig */,
+				F0A080AC9264A313BA741CC3 /* Pods-DreamList.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C31BC8C4EBC796C0197204CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				546B6A271135FF0B6F7F0E8F /* Pods_DreamList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEC67CE91DBB1EC300E7AAAB = {
 			isa = PBXGroup;
 			children = (
 				FEC67CF41DBB1EC400E7AAAB /* DreamList */,
 				FEC67D0C1DBB1EC400E7AAAB /* DreamListTests */,
 				FEC67CF31DBB1EC400E7AAAB /* Products */,
+				4C27016FA60B1FDC1DD720C3 /* Pods */,
+				C31BC8C4EBC796C0197204CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,9 +121,10 @@
 		FEC67CF41DBB1EC400E7AAAB /* DreamList */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67D1B1DBB1F6800E7AAAB /* Delegate */,
+				FEC67D651DBBB1F000E7AAAB /* Shared */,
 				FEC67D2C1DBB215900E7AAAB /* Components */,
 				FEC67D181DBB1F6800E7AAAB /* Controllers */,
-				FEC67D1B1DBB1F6800E7AAAB /* Delegate */,
 				FEC67D1C1DBB1F6800E7AAAB /* Models */,
 				FEC67D1F1DBB1F6800E7AAAB /* Resources */,
 				FEC67D3D1DBB27BB00E7AAAB /* ViewCells */,
@@ -129,6 +164,8 @@
 		FEC67D1C1DBB1F6800E7AAAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67D601DBBA73500E7AAAB /* Base */,
+				FEC67D5B1DBBA5EE00E7AAAB /* Product */,
 				FEC67D1D1DBB1F6800E7AAAB /* DreamList.xcdatamodeld */,
 			);
 			path = Models;
@@ -145,8 +182,8 @@
 		FEC67D211DBB1F6800E7AAAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FEC67D221DBB1F6800E7AAAB /* LaunchScreen.storyboard */,
 				FEC67D241DBB1F6800E7AAAB /* Main.storyboard */,
+				FEC67D221DBB1F6800E7AAAB /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +215,7 @@
 		FEC67D451DBB28E400E7AAAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67D571DBB98A600E7AAAB /* Podfile */,
 				FEC67D041DBB1EC400E7AAAB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -207,6 +245,31 @@
 			path = Stores;
 			sourceTree = "<group>";
 		};
+		FEC67D5B1DBBA5EE00E7AAAB /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				FEC67D5C1DBBA60100E7AAAB /* ProductEntity.swift */,
+				FEC67D5E1DBBA60D00E7AAAB /* ProductModel.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		FEC67D601DBBA73500E7AAAB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FEC67D631DBBA8C400E7AAAB /* Router.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FEC67D651DBBB1F000E7AAAB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FEC67D661DBBB1FC00E7AAAB /* Manager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,9 +277,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEC67D121DBB1EC400E7AAAB /* Build configuration list for PBXNativeTarget "DreamList" */;
 			buildPhases = (
+				87AE48CACFE4B9C6B5A0CEE7 /* [CP] Check Pods Manifest.lock */,
 				FEC67CEE1DBB1EC300E7AAAB /* Sources */,
 				FEC67CEF1DBB1EC300E7AAAB /* Frameworks */,
 				FEC67CF01DBB1EC300E7AAAB /* Resources */,
+				81B218403A12E29A09EA743F /* [CP] Embed Pods Frameworks */,
+				C5087AFC307974EDA5498FD7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC67D581DBB98A600E7AAAB /* Podfile in Resources */,
 				FEC67D421DBB285B00E7AAAB /* ProductViewCell.xib in Resources */,
 				FEC67D2B1DBB1F6800E7AAAB /* Main.storyboard in Resources */,
 				FEC67D291DBB1F6800E7AAAB /* Assets.xcassets in Resources */,
@@ -306,17 +373,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		81B218403A12E29A09EA743F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DreamList/Pods-DreamList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87AE48CACFE4B9C6B5A0CEE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5087AFC307974EDA5498FD7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DreamList/Pods-DreamList-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FEC67CEE1DBB1EC300E7AAAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FEC67D411DBB285B00E7AAAB /* ProductViewCell.swift in Sources */,
+				FEC67D641DBBA8C400E7AAAB /* Router.swift in Sources */,
 				FEC67D321DBB24E100E7AAAB /* AppDelegate.swift in Sources */,
 				FEC67D541DBB30FB00E7AAAB /* StoresViewController.swift in Sources */,
 				FEC67D4D1DBB2E1100E7AAAB /* MyWishesViewController.swift in Sources */,
+				FEC67D5D1DBBA60100E7AAAB /* ProductEntity.swift in Sources */,
 				FEC67D281DBB1F6800E7AAAB /* DreamList.xcdatamodeld in Sources */,
 				FEC67D521DBB30E200E7AAAB /* ProductsViewController.swift in Sources */,
+				FEC67D5F1DBBA60D00E7AAAB /* ProductModel.swift in Sources */,
+				FEC67D671DBBB1FC00E7AAAB /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +570,7 @@
 		};
 		FEC67D131DBB1EC400E7AAAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45F7D8A34ACBDC44B9762537 /* Pods-DreamList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DreamList/Info.plist;
@@ -463,6 +583,7 @@
 		};
 		FEC67D141DBB1EC400E7AAAB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0A080AC9264A313BA741CC3 /* Pods-DreamList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DreamList/Info.plist;
@@ -520,6 +641,7 @@
 				FEC67D141DBB1EC400E7AAAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FEC67D151DBB1EC400E7AAAB /* Build configuration list for PBXNativeTarget "DreamListTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +650,7 @@
 				FEC67D171DBB1EC400E7AAAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
