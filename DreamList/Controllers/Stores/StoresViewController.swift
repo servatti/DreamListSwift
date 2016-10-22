@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import ObjectMapper
+import AlamofireObjectMapper
 
 class StoresViewController: UIViewController,
                             UITableViewDataSource,
@@ -17,10 +20,14 @@ class StoresViewController: UIViewController,
     
     let cellIdentifier = "StoreCell"
     
+    var stores: [StoreEntity]?
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadStores()
     }
     
     // MARK: - UITableViewDataSource
@@ -28,14 +35,16 @@ class StoresViewController: UIViewController,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
-        cell?.textLabel?.text = "Store's name"
-        cell?.detailTextLabel?.text = "2323 wishes"
+        let store = stores![indexPath.row]
+        
+        cell?.textLabel?.text = store.name
+        cell?.detailTextLabel?.text = "\(store.wishes) wishe\(store.wishes != 1 ? "s" : "")"
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return stores?.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,5 +60,19 @@ class StoresViewController: UIViewController,
     }
     
     // MARK: - Internal
-
+    func loadStores() {
+        Alamofire.request(Router.loadStores())
+            .validate().responseArray { (response: DataResponse<[StoreEntity]>) in
+                
+                switch response.result {
+                case .success(let value):
+                    self.stores = value
+                    self.tableView.reloadData()
+                    break
+                case .failure(let error):
+                    Manager.sharedInstance.showAlert(message: error.localizedDescription)
+                    break
+                }
+        }
+    }
 }

@@ -20,10 +20,10 @@
 		FEC67D521DBB30E200E7AAAB /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D501DBB30E200E7AAAB /* ProductsViewController.swift */; };
 		FEC67D541DBB30FB00E7AAAB /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D531DBB30FB00E7AAAB /* StoresViewController.swift */; };
 		FEC67D581DBB98A600E7AAAB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FEC67D571DBB98A600E7AAAB /* Podfile */; };
-		FEC67D5D1DBBA60100E7AAAB /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D5C1DBBA60100E7AAAB /* ProductEntity.swift */; };
-		FEC67D5F1DBBA60D00E7AAAB /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D5E1DBBA60D00E7AAAB /* ProductModel.swift */; };
 		FEC67D641DBBA8C400E7AAAB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D631DBBA8C400E7AAAB /* Router.swift */; };
 		FEC67D671DBBB1FC00E7AAAB /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D661DBBB1FC00E7AAAB /* Manager.swift */; };
+		FEC67D691DBBB4B100E7AAAB /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D681DBBB4B100E7AAAB /* ProductEntity.swift */; };
+		FEC67D6B1DBBBC9000E7AAAB /* StoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D6A1DBBBC9000E7AAAB /* StoreEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +56,10 @@
 		FEC67D501DBB30E200E7AAAB /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		FEC67D531DBB30FB00E7AAAB /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
 		FEC67D571DBB98A600E7AAAB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
-		FEC67D5C1DBBA60100E7AAAB /* ProductEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
-		FEC67D5E1DBBA60D00E7AAAB /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		FEC67D631DBBA8C400E7AAAB /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FEC67D661DBBB1FC00E7AAAB /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		FEC67D681DBBB4B100E7AAAB /* ProductEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
+		FEC67D6A1DBBBC9000E7AAAB /* StoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +164,9 @@
 		FEC67D1C1DBB1F6800E7AAAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67D681DBBB4B100E7AAAB /* ProductEntity.swift */,
+				FEC67D6A1DBBBC9000E7AAAB /* StoreEntity.swift */,
 				FEC67D601DBBA73500E7AAAB /* Base */,
-				FEC67D5B1DBBA5EE00E7AAAB /* Product */,
 				FEC67D1D1DBB1F6800E7AAAB /* DreamList.xcdatamodeld */,
 			);
 			path = Models;
@@ -243,15 +244,6 @@
 				FEC67D531DBB30FB00E7AAAB /* StoresViewController.swift */,
 			);
 			path = Stores;
-			sourceTree = "<group>";
-		};
-		FEC67D5B1DBBA5EE00E7AAAB /* Product */ = {
-			isa = PBXGroup;
-			children = (
-				FEC67D5C1DBBA60100E7AAAB /* ProductEntity.swift */,
-				FEC67D5E1DBBA60D00E7AAAB /* ProductModel.swift */,
-			);
-			path = Product;
 			sourceTree = "<group>";
 		};
 		FEC67D601DBBA73500E7AAAB /* Base */ = {
@@ -426,15 +418,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC67D691DBBB4B100E7AAAB /* ProductEntity.swift in Sources */,
 				FEC67D411DBB285B00E7AAAB /* ProductViewCell.swift in Sources */,
 				FEC67D641DBBA8C400E7AAAB /* Router.swift in Sources */,
 				FEC67D321DBB24E100E7AAAB /* AppDelegate.swift in Sources */,
+				FEC67D6B1DBBBC9000E7AAAB /* StoreEntity.swift in Sources */,
 				FEC67D541DBB30FB00E7AAAB /* StoresViewController.swift in Sources */,
 				FEC67D4D1DBB2E1100E7AAAB /* MyWishesViewController.swift in Sources */,
-				FEC67D5D1DBBA60100E7AAAB /* ProductEntity.swift in Sources */,
 				FEC67D281DBB1F6800E7AAAB /* DreamList.xcdatamodeld in Sources */,
 				FEC67D521DBB30E200E7AAAB /* ProductsViewController.swift in Sources */,
-				FEC67D5F1DBBA60D00E7AAAB /* ProductModel.swift in Sources */,
 				FEC67D671DBBB1FC00E7AAAB /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

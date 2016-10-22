@@ -6,7 +6,6 @@
 //  Copyright © 2016 Fera Solutions. All rights reserved.
 //
 
-import UIKit
 import ObjectMapper
 
 class ProductEntity: NSObject, Mappable {

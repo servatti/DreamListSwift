@@ -11,10 +11,13 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
     case loadProducts()
-    case createUser(parameters: Parameters)
-    case readUser(username: String)
-    case updateUser(username: String, parameters: Parameters)
-    case destroyUser(username: String)
+    case loadStores()
+//    case loadUser()
+    
+//    case createUser(parameters: Parameters)
+//    case readUser(username: String)
+//    case updateUser(username: String, parameters: Parameters)
+//    case destroyUser(username: String)
     
     static let baseURLString = "https://jsonplaceholder.typicode.com"
     
@@ -22,14 +25,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .loadProducts:
             return .get
-        case .createUser:
-            return .post
-        case .readUser:
+        case .loadStores:
             return .get
-        case .updateUser:
-            return .put
-        case .destroyUser:
-            return .delete
         }
     }
     
@@ -37,14 +34,17 @@ enum Router: URLRequestConvertible {
         switch self {
         case .loadProducts:
             return "/posts"
-        case .createUser:
-            return "/users"
-        case .readUser(let username):
-            return "/users/\(username)"
-        case .updateUser(let username, _):
-            return "/users/\(username)"
-        case .destroyUser(let username):
-            return "/users/\(username)"
+        case .loadStores:
+            return "/posts"
+            
+//        case .createUser:
+//            return "/users"
+//        case .readUser(let username):
+//            return "/users/\(username)"
+//        case .updateUser(let username, _):
+//            return "/users/\(username)"
+//        case .destroyUser(let username):
+//            return "/users/\(username)"
         }
     }
     
@@ -59,13 +59,16 @@ enum Router: URLRequestConvertible {
         switch self {
         case .loadProducts:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
-        case .createUser(let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-        case .updateUser(_, let parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-        default:
-            break
+        case .loadStores:
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+            
+//        case .createUser(let parameters):
+//            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+//        case .updateUser(_, let parameters):
+//            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
+        
+//        urlRequest.addValue(<#T##value: String##String#>, forHTTPHeaderField: <#T##String#>)
         
         return urlRequest
     }
