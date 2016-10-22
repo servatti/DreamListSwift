@@ -38,7 +38,7 @@ class StoresViewController: UIViewController,
         let store = stores![indexPath.row]
         
         cell?.textLabel?.text = store.name
-        cell?.detailTextLabel?.text = "\(store.wishes) wishe\(store.wishes != 1 ? "s" : "")"
+        cell?.detailTextLabel?.text = "\(store.wishes) wish\(store.wishes != 1 ? "es" : "")"
         
         return cell!
     }

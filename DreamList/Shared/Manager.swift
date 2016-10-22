@@ -33,4 +33,8 @@ class Manager {
         UserDefaults.standard.set(value, forKey: key)
         UserDefaults.standard.synchronize()
     }
+    
+    func showLoading(show: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = show
+    }
 }

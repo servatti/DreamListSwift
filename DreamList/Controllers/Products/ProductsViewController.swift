@@ -38,7 +38,7 @@ class ProductsViewController: UIViewController,
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ProductViewCell
         let product = products![indexPath.row]
         
-        cell.setupCell(productId: product.id, productName: product.name, vendor: product.vendor, wishes: product.wishes, imageURL: product.imageURL, price: product.price)
+        cell.setupCell(product: product)
         
         return cell
     }

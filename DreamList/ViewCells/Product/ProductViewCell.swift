@@ -9,40 +9,89 @@
 import Foundation
 import UIKit
 import SDWebImage
+import Alamofire
+import ObjectMapper
+import AlamofireObjectMapper
 
 class ProductViewCell: UITableViewCell
 {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var vendorLabel: UILabel!
     @IBOutlet weak var wishesLabel: UILabel!
+    @IBOutlet weak var wishButton: UIButton!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     
-    var productId: NSInteger = 0
+    var product: ProductEntity?
     
-    // MARK: - expose
-    
-    func setupCell(productId: Int = 0, productName: String?, vendor: String?, wishes: Int = 0, imageURL: String?, price: String?) {
-        self.productId = productId
-        nameLabel.text = productName
-        vendorLabel.text = vendor
-        wishesLabel.text = "\(wishes) wishe\(wishes != 1 ? "s" : "")"
+    // MARK: - View Life Cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        if let price = price {
+        setup()
+    }
+    
+    // MARK: - Expose
+    
+    func setupCell(product: ProductEntity) {
+        self.product = product
+        nameLabel.text = product.name
+        vendorLabel.text = product.vendor
+        
+        if let price = product.price {
             priceLabel.isHidden = false
             priceLabel.text = "$\(price)"
         } else {
             priceLabel.isHidden = true
         }
         
-        if let imageURL = imageURL {
+        if let imageURL = product.imageURL {
             productImageView.sd_setImage(with: URL(string: imageURL))
+        }
+        
+        updateWishes(wishes: product.wishes, isWished: product.isWished)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func wishesDidTap(sender: UIButton) {
+        toogleWish()
+    }
+    
+    // MARK: - Internal
+    
+    func toogleWish() {
+        // Gives tap feedback
+        let wishes = product!.wishes + (product!.isWished ? -1 : 1)
+        updateWishes(wishes: wishes, isWished: !product!.isWished)
+        
+        let endpoint = (product!.isWished ? Router.deleteProductWish(productId: product!.id) : Router.saveProductWish(productId: product!.id))
+        
+        Manager.sharedInstance.showLoading(show: true)
+        Alamofire.request(endpoint)
+            .validate().responseData { response in
+                Manager.sharedInstance.showLoading(show: false)
+                
+                switch response.result {
+                case .success:
+                    self.product!.wishes += 1
+                    break
+                    
+                case .failure(let error):
+                    self.updateWishes(wishes: self.product!.wishes, isWished: self.product!.isWished)
+                    
+                    Manager.sharedInstance.showAlert(message: error.localizedDescription)
+                    break
+                }
         }
     }
     
-    // MARK: - actions
+    func updateWishes(wishes: Int, isWished wished: Bool) {
+        wishesLabel.text = "\(wishes) wish\(wishes != 1 ? "es" : "")"
+        wishButton.isSelected = wished
+    }
     
-    @IBAction func wishesDidTap(sender: UIButton) {
-        print("wishes ", productId)
+    func setup() {
+        wishButton.setImage(wishButton.image(for: UIControlState.selected), for: [UIControlState.selected, UIControlState.highlighted])
     }
 }
