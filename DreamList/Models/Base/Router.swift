@@ -11,7 +11,7 @@ import Alamofire
 
 enum Router: URLRequestConvertible {
     case loadProducts(params: Parameters)
-    case saveProductWish(productId: Int)
+    case saveProductWish(productId: Int, params: Parameters)
     case deleteProductWish(productId: Int)
     
     case loadStores(params: Parameters)
@@ -23,6 +23,7 @@ enum Router: URLRequestConvertible {
     
 //    static let baseURLString = "http://localhost:3000"
     static let baseURLString = "https://dream-list.herokuapp.com/api/v1"
+    static let AuthorizationHeaderKey = "token"
     
     var method: HTTPMethod {
         switch self {
@@ -51,10 +52,10 @@ enum Router: URLRequestConvertible {
         // Products
         case .loadProducts:
             return "/products"
-        case .saveProductWish(let productId):
-            return "/products/\(productId)/wish"
+        case .saveProductWish(let productId, _):
+            return "/products/\(productId)/wishes"
         case .deleteProductWish(let productId):
-            return "/products/\(productId)/wish"
+            return "/products/\(productId)/wishes"
             
         // Stores
         case .loadStores:
@@ -83,8 +84,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .loadProducts(let params):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
-        case .saveProductWish:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+        case .saveProductWish(_, let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
         case .deleteProductWish:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
@@ -102,7 +103,7 @@ enum Router: URLRequestConvertible {
         
         // Adds token to header
         if let currentToken = Manager.sharedInstance.currentToken() {
-            urlRequest.addValue(currentToken, forHTTPHeaderField: "Authorization")
+            urlRequest.addValue(currentToken, forHTTPHeaderField: Router.AuthorizationHeaderKey)
         }
         
         return urlRequest

@@ -34,7 +34,8 @@ class LoginViewController: UIViewController {
                 Manager.sharedInstance.showAlert(message: error.localizedDescription)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+//            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success(_, _, let accessToken):
                 print("Logged in! \(accessToken.authenticationToken)")
                 self.facebookFieldsAndLogin()
             }
@@ -69,8 +70,8 @@ class LoginViewController: UIViewController {
     func doLogin(email: String, token: String) {
         let params = ["email": email, "token": AccessToken.current!.authenticationToken]
         
-        Alamofire.request(Router.loadStores(params: params))
-            .validate().responseArray { (response: DataResponse<[StoreEntity]>) in
+        Alamofire.request(Router.login(params: params))
+            .validate().responseData { response in
                 
                 Manager.sharedInstance.showLoadingSpinner(show: false)
                 

@@ -61,7 +61,7 @@ class Manager {
             if show {
                 let size = CGFloat(60)
                 let frame = CGRect(x: (UIScreen.main.bounds.width - size) / 2, y: (UIScreen.main.bounds.height - size) / 2, width: size, height: size)
-                let spinner = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleMultiple, color: UIColor(red: 0, green: 191/255.0, blue: 136/255.0, alpha: 1), padding: 0)
+                let spinner = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleMultiple, color: UIColor(red: 0, green: 149/255.0, blue: 110/255.0, alpha: 1), padding: 0)
                 spinner.startAnimating()
                 
                 let container = UIView(frame: UIScreen.main.bounds)

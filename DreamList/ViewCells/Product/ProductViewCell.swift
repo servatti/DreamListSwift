@@ -79,7 +79,10 @@ class ProductViewCell: UITableViewCell
         let wishes = product!.wishes + (product!.isWished ? -1 : 1)
         updateWishes(wishes: wishes, isWished: !product!.isWished)
         
-        let endpoint = (product!.isWished ? Router.deleteProductWish(productId: product!.id) : Router.saveProductWish(productId: product!.id))
+        let params = ["shop_id": "1"]
+        let endpoint = (product!.isWished ?
+                        Router.deleteProductWish(productId: product!.id) :
+                        Router.saveProductWish(productId: product!.id, params: params))
         
         Manager.sharedInstance.showLoading(show: true)
         Alamofire.request(endpoint)
