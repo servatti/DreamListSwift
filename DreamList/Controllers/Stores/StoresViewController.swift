@@ -26,6 +26,13 @@ class StoresViewController: UIViewController,
     var stores = [StoreEntity]()
     var isFirstLoad = true
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -80,14 +87,18 @@ class StoresViewController: UIViewController,
                 
                 if self.isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: false) }
                 self.isFirstLoad = false
+                if (self.refreshControl.isRefreshing) { self.refreshControl.endRefreshing() }
                 
                 switch response.result {
                 case .success(let value):
-                    self.stores.append(contentsOf: value)
-                    self.tableView.reloadData()
+                    // TODO: Implement pagination on api
+                    // self.stores.append(contentsOf: value)
+                    // self.currentPage += self.kPageSize
                     
-                    self.currentPage += self.kPageSize
+                    self.stores = value
+                    self.tableView.reloadData()
                     break
+                    
                 case .failure(let error):
                     Manager.sharedInstance.showAlert(message: error.localizedDescription)
                     break
@@ -103,10 +114,15 @@ class StoresViewController: UIViewController,
         tableView.infiniteScrollIndicatorStyle = .gray
         tableView.infiniteScrollTriggerOffset = 500
         tableView.tableFooterView = UIView()
+        tableView.addSubview(refreshControl)
         
         tableView.addInfiniteScroll { (tableView) in
             self.loadStores()
         }
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        loadStores()
     }
     
     // MARK: - Navigation

@@ -17,6 +17,9 @@ class Manager {
 
     static let sharedInstance = Manager()
     
+    var reloadMyWishes = false
+    var reloadProducts = false
+    
     // MARK: - Expose
     
     func showAlert(title: String? = "Dream List", message: String) {

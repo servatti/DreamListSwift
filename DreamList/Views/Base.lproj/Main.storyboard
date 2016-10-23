@@ -221,6 +221,12 @@
                                     <action selector="loginDidTapWithSender:" destination="6jG-95-9sd" eventType="touchUpInside" id="lRf-2f-ACt"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dream_list_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-OY-FWq">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cab-if-O7Z"/>
+                                    <constraint firstAttribute="width" constant="100" id="swF-mJ-TKv"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Dream List!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6E-W3-xQo">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="F26-Zr-vo8"/>
@@ -230,12 +236,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dream_list_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-OY-FWq">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="cab-if-O7Z"/>
-                                    <constraint firstAttribute="width" constant="100" id="swF-mJ-TKv"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.19427716732025146" green="0.74914950132369995" blue="0.51107245683670044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -244,7 +244,7 @@
                             <constraint firstItem="Xqx-WI-bTj" firstAttribute="top" secondItem="i3s-Hr-cTy" secondAttribute="bottom" constant="20" id="PMJ-Si-PG2"/>
                             <constraint firstItem="KdJ-OY-FWq" firstAttribute="centerX" secondItem="mZn-HN-YHw" secondAttribute="centerX" id="iew-NN-rJK"/>
                             <constraint firstItem="i3s-Hr-cTy" firstAttribute="centerX" secondItem="mZn-HN-YHw" secondAttribute="centerX" id="pKV-2i-7wz"/>
-                            <constraint firstItem="z6E-W3-xQo" firstAttribute="top" secondItem="KdJ-OY-FWq" secondAttribute="bottom" constant="8" id="yox-qb-bj6"/>
+                            <constraint firstItem="z6E-W3-xQo" firstAttribute="top" secondItem="KdJ-OY-FWq" secondAttribute="bottom" constant="19" id="yox-qb-bj6"/>
                         </constraints>
                     </view>
                 </viewController>

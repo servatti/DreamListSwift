@@ -26,6 +26,13 @@ class ProductsViewController: UIViewController,
     var store: StoreEntity?
     var isFirstLoad = true
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+     
+        return refreshControl
+    }()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -34,7 +41,17 @@ class ProductsViewController: UIViewController,
         setup()
         setupTableView()
         
-        loadProducts()
+        loadProducts(showSpinner: isFirstLoad)
+        isFirstLoad = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Manager.sharedInstance.reloadProducts {
+            Manager.sharedInstance.reloadProducts = false
+            loadProducts(showSpinner: true)
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -65,8 +82,10 @@ class ProductsViewController: UIViewController,
     
     // MARK: - Internal
     
-    func loadProducts() {
-        if isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: true) }
+    func loadProducts(showSpinner: Bool = false) {
+        if showSpinner {
+            Manager.sharedInstance.showLoadingSpinner(show: true)
+        }
         
         let endpoint = currentEndpoint()
         
@@ -75,15 +94,19 @@ class ProductsViewController: UIViewController,
                 
                 self.tableView.finishInfiniteScroll()
                 
-                if self.isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: false) }
-                self.isFirstLoad = false
+                // Loading checks
+                 Manager.sharedInstance.showLoadingSpinner(show: false)
+                if (self.refreshControl.isRefreshing) { self.refreshControl.endRefreshing() }
                 
                 switch response.result {
                 case .success(let value):
-                    self.products.append(contentsOf: value)
+                    // TODO: Implement pagination on api
+                    // self.products.append(contentsOf: value)
+                    // self.currentPage += self.kPageSize
+                    self.products = value
                     self.tableView.reloadData()
-                    self.currentPage += self.kPageSize
                     break
+                    
                 case .failure(let error):
                     Manager.sharedInstance.showAlert(message: error.localizedDescription)
                     break
@@ -104,10 +127,15 @@ class ProductsViewController: UIViewController,
         tableView.infiniteScrollIndicatorStyle = .gray
         tableView.infiniteScrollTriggerOffset = 1000
         tableView.tableFooterView = UIView()
+        tableView.addSubview(refreshControl)
         
-        tableView.addInfiniteScroll { (tableView) in
-            self.loadProducts()
-        }
+//        tableView.addInfiniteScroll { (tableView) in
+//            self.loadProducts()
+//        }
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        loadProducts()
     }
     
     func setup() {

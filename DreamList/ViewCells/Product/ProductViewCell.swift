@@ -76,18 +76,23 @@ class ProductViewCell: UITableViewCell
     
     func toogleWish() {
         // Gives tap feedback
-        let wishes = product!.wishes + (product!.isWished ? -1 : 1)
-        updateWishes(wishes: wishes, isWished: !product!.isWished)
+        var wishes = product!.wishes + (product!.isWished ? -1 : 1)
+        wishes = (wishes < 0 ? 0 : wishes)
         
-        let params = ["shop_id": "1"]
+        updateWishes(wishes: wishes, isWished: !product!.isWished)
+        wishButton.isEnabled = false
+        
+        let params = ["shop_id": product!.shopId]
         let endpoint = (product!.isWished ?
-                        Router.deleteProductWish(productId: product!.id) :
+                        Router.deleteProductWish(productId: product!.id, params: params) :
                         Router.saveProductWish(productId: product!.id, params: params))
         
         Manager.sharedInstance.showLoading(show: true)
         Alamofire.request(endpoint)
             .validate().responseData { response in
                 Manager.sharedInstance.showLoading(show: false)
+                
+                self.wishButton.isEnabled = true
                 
                 switch response.result {
                 case .success:
@@ -97,6 +102,9 @@ class ProductViewCell: UITableViewCell
                     if self.product!.isWished {
                         self.callDeleteDelegate()
                     }
+                    
+                    // Forces wishlist reload
+                    Manager.sharedInstance.reloadMyWishes = true
                     
                     self.product!.isWished = !self.product!.isWished
                     break

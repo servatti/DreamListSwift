@@ -10,6 +10,16 @@ import UIKit
 
 class MyWishesViewController: ProductsViewController {
     
+    // MARK: - View Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Manager.sharedInstance.reloadMyWishes {
+            Manager.sharedInstance.reloadMyWishes = false
+            loadProducts(showSpinner: true)
+        }
+    }
+    
     // MARK: - Override
     
     override func currentEndpoint() -> Router {
@@ -28,6 +38,7 @@ class MyWishesViewController: ProductsViewController {
         tableView.beginUpdates()
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         tableView.endUpdates()
+        
+        Manager.sharedInstance.reloadProducts = true
     }
-    
 }

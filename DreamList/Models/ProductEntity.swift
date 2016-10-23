@@ -17,6 +17,7 @@ class ProductEntity: NSObject, Mappable {
     var wishes: Int = 0
     var imageURLPath: String?
     var isWished: Bool = false
+    var shopId: Int = 0
     
     // MARK: - Override
     
@@ -28,10 +29,11 @@ class ProductEntity: NSObject, Mappable {
         name <- map["title"]
         vendor <- map["vendor"]
         price <- map["variants.0.price"]
-//        urlPath <- map["url"]
-//        wishes <- map["wishes"]
+        urlPath <- map["link"]
+        wishes <- map["wishes"]
         imageURLPath <- map["image.src"]
-//        isWished <- map["is_wished"]
+        isWished <- map["is_wished"]
+        shopId <- map["shop_id"]
     }
     
     // MARK: - Expose

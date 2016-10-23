@@ -12,7 +12,7 @@ import Alamofire
 enum Router: URLRequestConvertible {
     case loadProducts(params: Parameters)
     case saveProductWish(productId: Int, params: Parameters)
-    case deleteProductWish(productId: Int)
+    case deleteProductWish(productId: Int, params: Parameters)
     
     case loadStores(params: Parameters)
     case loadStoreProducts(storeId: Int, params: Parameters)
@@ -30,7 +30,7 @@ enum Router: URLRequestConvertible {
         case .loadProducts:
             return .get
         case .saveProductWish:
-            return .put
+            return .post
         case .deleteProductWish:
             return .delete
             
@@ -54,13 +54,13 @@ enum Router: URLRequestConvertible {
             return "/products"
         case .saveProductWish(let productId, _):
             return "/products/\(productId)/wishes"
-        case .deleteProductWish(let productId):
+        case .deleteProductWish(let productId, _):
             return "/products/\(productId)/wishes"
             
         // Stores
         case .loadStores:
             return "/shops"
-        case .loadStoreProducts(let storeId):
+        case .loadStoreProducts(let storeId, _):
             return "/shops/\(storeId)/products"
             
         // Wishlist
@@ -86,8 +86,8 @@ enum Router: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
         case .saveProductWish(_, let params):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
-        case .deleteProductWish:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+        case .deleteProductWish(_, let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
             
         case .loadStores(let params):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
