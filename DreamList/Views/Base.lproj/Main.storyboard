@@ -47,7 +47,7 @@
         <scene sceneID="ePR-pg-rpA">
             <objects>
                 <navigationController id="iQ8-6z-Tb3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Products" id="eqf-fA-FXz"/>
+                    <tabBarItem key="tabBarItem" title="Products" image="products" id="eqf-fA-FXz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ka3-ls-X61">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -60,14 +60,15 @@
             </objects>
             <point key="canvasLocation" x="598" y="-571"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Base Tab Bar Controller-->
         <scene sceneID="0gC-i8-pPQ">
             <objects>
-                <tabBarController id="nct-B5-hPl" sceneMemberID="viewController">
+                <tabBarController id="nct-B5-hPl" customClass="BaseTabBarController" customModule="DreamList" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Emb-9p-NhM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.19427713751792908" green="0.74914950132369995" blue="0.51107245683670044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="iQ8-6z-Tb3" kind="relationship" relationship="viewControllers" id="xC9-xA-m91"/>
@@ -121,7 +122,7 @@
         <scene sceneID="e2Z-Gr-2iM">
             <objects>
                 <navigationController id="87P-M6-68h" userLabel="My Wishes" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Wishes" id="heX-ei-XDr"/>
+                    <tabBarItem key="tabBarItem" title="My Wishes" image="heart" id="heX-ei-XDr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="id1-YW-9yE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,7 +231,7 @@
         <scene sceneID="7Ug-ZA-Gd5">
             <objects>
                 <navigationController id="eeF-ud-s1B" userLabel="Stores" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stores" id="dSo-p8-Vox"/>
+                    <tabBarItem key="tabBarItem" title="Stores" image="store" id="dSo-p8-Vox"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IaM-gS-fnt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -247,7 +248,7 @@
         <scene sceneID="Qgm-Sb-YWN">
             <objects>
                 <navigationController title="Account" id="Omq-MR-79z" userLabel="Stores" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" id="B5p-XD-7f7"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="account" id="B5p-XD-7f7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UC7-bj-K5L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -326,6 +327,12 @@
             <point key="canvasLocation" x="1360.8" y="1432.5337331334333"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="account" width="25" height="25"/>
+        <image name="heart" width="25" height="25"/>
+        <image name="products" width="25" height="25"/>
+        <image name="store" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hFw-sV-Ul2"/>
     </inferredMetricsTieBreakers>

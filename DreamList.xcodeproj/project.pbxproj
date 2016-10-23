@@ -26,6 +26,7 @@
 		FEC67D6B1DBBBC9000E7AAAB /* StoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D6A1DBBBC9000E7AAAB /* StoreEntity.swift */; };
 		FEC67D6E1DBBCDFE00E7AAAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D6D1DBBCDFE00E7AAAB /* LoginViewController.swift */; };
 		FEC67D731DBC56FE00E7AAAB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */; };
+		FEC67D771DBC641800E7AAAB /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D761DBC641800E7AAAB /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		FEC67D6F1DBBDEED00E7AAAB /* DreamList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DreamList.entitlements; sourceTree = "<group>"; };
 		FEC67D701DBC2EB100E7AAAB /* DreamList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DreamList-Bridging-Header.h"; sourceTree = "<group>"; };
 		FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FEC67D761DBC641800E7AAAB /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */,
+				FEC67D761DBC641800E7AAAB /* BaseTabBarController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				FEC67D4D1DBB2E1100E7AAAB /* MyWishesViewController.swift in Sources */,
 				FEC67D281DBB1F6800E7AAAB /* DreamList.xcdatamodeld in Sources */,
 				FEC67D521DBB30E200E7AAAB /* ProductsViewController.swift in Sources */,
+				FEC67D771DBC641800E7AAAB /* BaseTabBarController.swift in Sources */,
 				FEC67D671DBBB1FC00E7AAAB /* Manager.swift in Sources */,
 				FEC67D6E1DBBCDFE00E7AAAB /* LoginViewController.swift in Sources */,
 			);
