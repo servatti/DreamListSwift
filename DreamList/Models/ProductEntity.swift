@@ -25,13 +25,13 @@ class ProductEntity: NSObject, Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        name <- map["name"]
+        name <- map["title"]
         vendor <- map["vendor"]
-        price <- map["price"]
-        urlPath <- map["url"]
-        wishes <- map["wishes"]
-        imageURLPath <- map["image_url"]
-        isWished <- map["is_wished"]
+        price <- map["variants.0.price"]
+//        urlPath <- map["url"]
+//        wishes <- map["wishes"]
+        imageURLPath <- map["image.src"]
+//        isWished <- map["is_wished"]
     }
     
     // MARK: - Expose
