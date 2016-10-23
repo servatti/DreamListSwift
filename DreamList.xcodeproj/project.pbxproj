@@ -27,6 +27,7 @@
 		FEC67D6E1DBBCDFE00E7AAAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D6D1DBBCDFE00E7AAAB /* LoginViewController.swift */; };
 		FEC67D731DBC56FE00E7AAAB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */; };
 		FEC67D771DBC641800E7AAAB /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D761DBC641800E7AAAB /* BaseTabBarController.swift */; };
+		FEC67D7A1DBD23AA00E7AAAB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D791DBD23AA00E7AAAB /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		FEC67D701DBC2EB100E7AAAB /* DreamList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DreamList-Bridging-Header.h"; sourceTree = "<group>"; };
 		FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FEC67D761DBC641800E7AAAB /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		FEC67D791DBD23AA00E7AAAB /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		FEC67D181DBB1F6800E7AAAB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67D781DBD239E00E7AAAB /* Account */,
 				FEC67D711DBC56A300E7AAAB /* Base */,
 				FEC67D6C1DBBCDEA00E7AAAB /* Login */,
 				FEC67D4F1DBB30E200E7AAAB /* Products */,
@@ -289,6 +292,14 @@
 				FEC67D761DBC641800E7AAAB /* BaseTabBarController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		FEC67D781DBD239E00E7AAAB /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FEC67D791DBD23AA00E7AAAB /* AccountViewController.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +466,7 @@
 			files = (
 				FEC67D691DBBB4B100E7AAAB /* ProductEntity.swift in Sources */,
 				FEC67D411DBB285B00E7AAAB /* ProductViewCell.swift in Sources */,
+				FEC67D7A1DBD23AA00E7AAAB /* AccountViewController.swift in Sources */,
 				FEC67D641DBBA8C400E7AAAB /* Router.swift in Sources */,
 				FEC67D321DBB24E100E7AAAB /* AppDelegate.swift in Sources */,
 				FEC67D6B1DBBBC9000E7AAAB /* StoreEntity.swift in Sources */,

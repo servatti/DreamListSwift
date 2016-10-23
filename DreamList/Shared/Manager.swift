@@ -10,6 +10,9 @@ import UIKit
 import Foundation
 import NVActivityIndicatorView
 
+// MARK: - Consts
+let UserDefaultsToken = "DreamListUserDefaultsToken"
+
 class Manager {
 
     static let sharedInstance = Manager()
@@ -32,6 +35,11 @@ class Manager {
     
     func setUserDefaultsValue(key: String, value: Any) {
         UserDefaults.standard.set(value, forKey: key)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func removeUserDefaultsKey(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
         UserDefaults.standard.synchronize()
     }
     
@@ -66,4 +74,27 @@ class Manager {
         }
     }
     
+    func setRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let identifier = (currentToken() == nil ? "LoginViewController" : "BaseTabBarController")
+        
+        let window = (UIApplication.shared.delegate as! AppDelegate).window!
+        
+        window.rootViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        window.makeKeyAndVisible()
+    }
+    
+    func setCurrentToken(token: String) {
+        setUserDefaultsValue(key: UserDefaultsToken, value: token)
+    }
+    
+    func currentToken() -> String? {
+        return userDefaults(key: UserDefaultsToken) as? String
+    }
+    
+    func logOut() {
+        removeUserDefaultsKey(key: UserDefaultsToken)
+        setRootViewController()
+    }
 }

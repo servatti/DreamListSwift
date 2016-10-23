@@ -19,6 +19,8 @@ enum Router: URLRequestConvertible {
     
     case loadWishlist(params: Parameters)
     
+    case login(params: Parameters)
+    
 //    static let baseURLString = "http://localhost:3000"
     static let baseURLString = "https://dream-list.herokuapp.com/api/v1"
     
@@ -38,6 +40,9 @@ enum Router: URLRequestConvertible {
             
         case .loadWishlist:
             return .get
+            
+        case .login:
+            return .post
         }
     }
     
@@ -60,6 +65,10 @@ enum Router: URLRequestConvertible {
         // Wishlist
         case .loadWishlist:
             return "/wishlist"
+            
+        // Login
+        case .login:
+            return "/login"
         }
     }
     
@@ -86,9 +95,15 @@ enum Router: URLRequestConvertible {
             
         case .loadWishlist(let params):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
+            
+        case .login(let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
         }
         
-//        urlRequest.addValue(<#T##value: String##String#>, forHTTPHeaderField: <#T##String#>)
+        // Adds token to header
+        if let currentToken = Manager.sharedInstance.currentToken() {
+            urlRequest.addValue(currentToken, forHTTPHeaderField: "Authorization")
+        }
         
         return urlRequest
     }
