@@ -18,14 +18,18 @@ class StoresViewController: UIViewController,
 
     @IBOutlet weak var tableView: UITableView!
     
-    let cellIdentifier = "StoreCell"
+    let kCellIdentifier = "StoreCell"
+    let kPageSize = 1
     
-    var stores: [StoreEntity]?
+    var currentPage = 0
+    var stores = [StoreEntity]()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTableView()
         
         loadStores()
     }
@@ -33,9 +37,9 @@ class StoresViewController: UIViewController,
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier)
         
-        let store = stores![indexPath.row]
+        let store = stores[indexPath.row]
         
         cell?.textLabel?.text = store.name
         cell?.detailTextLabel?.text = "\(store.wishes) wish\(store.wishes != 1 ? "es" : "")"
@@ -44,7 +48,7 @@ class StoresViewController: UIViewController,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stores?.count ?? 0
+        return stores.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,7 +60,7 @@ class StoresViewController: UIViewController,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let store = stores![indexPath.row]
+        let store = stores[indexPath.row]
         
         performSegue(withIdentifier: "Products", sender: store)
     }
@@ -64,18 +68,43 @@ class StoresViewController: UIViewController,
     // MARK: - Internal
     
     func loadStores() {
-        Alamofire.request(Router.loadStores())
+        let params = currentParams()
+        Alamofire.request(Router.loadStores(params: params))
             .validate().responseArray { (response: DataResponse<[StoreEntity]>) in
                 
                 switch response.result {
                 case .success(let value):
-                    self.stores = value
+                    self.stores.append(contentsOf: value)
                     self.tableView.reloadData()
+                    
+                    self.currentPage += self.kPageSize
                     break
                 case .failure(let error):
                     Manager.sharedInstance.showAlert(message: error.localizedDescription)
                     break
                 }
+        }
+    }
+    
+    func currentParams() -> Parameters {
+        return ["_start": currentPage, "_end": currentPage + kPageSize]
+    }
+    
+    func setupTableView() {
+        tableView.infiniteScrollIndicatorStyle = .gray
+        tableView.infiniteScrollTriggerOffset = 500
+        tableView.tableFooterView = UIView()
+        
+        tableView.addInfiniteScroll { (tableView) in
+            self.loadStores()
+            
+            let indexPaths = [IndexPath]()
+            
+            tableView.beginUpdates()
+            tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+            tableView.endUpdates()
+            
+            tableView.finishInfiniteScroll()
         }
     }
     

@@ -25,6 +25,7 @@
 		FEC67D691DBBB4B100E7AAAB /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D681DBBB4B100E7AAAB /* ProductEntity.swift */; };
 		FEC67D6B1DBBBC9000E7AAAB /* StoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D6A1DBBBC9000E7AAAB /* StoreEntity.swift */; };
 		FEC67D6E1DBBCDFE00E7AAAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D6D1DBBCDFE00E7AAAB /* LoginViewController.swift */; };
+		FEC67D731DBC56FE00E7AAAB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		FEC67D6D1DBBCDFE00E7AAAB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FEC67D6F1DBBDEED00E7AAAB /* DreamList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DreamList.entitlements; sourceTree = "<group>"; };
 		FEC67D701DBC2EB100E7AAAB /* DreamList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DreamList-Bridging-Header.h"; sourceTree = "<group>"; };
+		FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		FEC67D181DBB1F6800E7AAAB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FEC67D711DBC56A300E7AAAB /* Base */,
 				FEC67D6C1DBBCDEA00E7AAAB /* Login */,
 				FEC67D4F1DBB30E200E7AAAB /* Products */,
 				FEC67D4B1DBB2DF800E7AAAB /* MyWishes */,
@@ -275,6 +278,14 @@
 				FEC67D6D1DBBCDFE00E7AAAB /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		FEC67D711DBC56A300E7AAAB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FEC67D721DBC56FE00E7AAAB /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,6 +455,7 @@
 				FEC67D641DBBA8C400E7AAAB /* Router.swift in Sources */,
 				FEC67D321DBB24E100E7AAAB /* AppDelegate.swift in Sources */,
 				FEC67D6B1DBBBC9000E7AAAB /* StoreEntity.swift in Sources */,
+				FEC67D731DBC56FE00E7AAAB /* BaseViewController.swift in Sources */,
 				FEC67D541DBB30FB00E7AAAB /* StoresViewController.swift in Sources */,
 				FEC67D4D1DBB2E1100E7AAAB /* MyWishesViewController.swift in Sources */,
 				FEC67D281DBB1F6800E7AAAB /* DreamList.xcdatamodeld in Sources */,

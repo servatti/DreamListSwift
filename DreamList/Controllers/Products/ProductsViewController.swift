@@ -13,14 +13,15 @@ import AlamofireObjectMapper
 
 class ProductsViewController: UIViewController,
                               UITableViewDataSource,
-                              UITableViewDelegate {
+                              UITableViewDelegate,
+                              ProductViewCellDelegate {
    
     @IBOutlet weak var tableView: UITableView!
     
-    let cellIdentifier = "ProductCell"
+    let kCellIdentifier = "ProductCell"
     let kPageSize = 5
-    var currentPage = 0
     
+    var currentPage = 0
     var products = [ProductEntity]()
     var store: StoreEntity?
     
@@ -38,7 +39,10 @@ class ProductsViewController: UIViewController,
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ProductViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier) as! ProductViewCell
+        cell.delegate = self
+        cell.tag = indexPath.row
+        
         let product = products[indexPath.row]
         
         cell.setupCell(product: product)
@@ -80,7 +84,12 @@ class ProductsViewController: UIViewController,
     }
     
     func currentEndpoint() -> Router {
-        return (store == nil ? Router.loadProducts(params: ["_start": currentPage, "_end": currentPage + kPageSize]) : Router.loadStoreProducts(storeId: store!.id))
+        let params = currentParams()
+        return (store == nil ? Router.loadProducts(params: params) : Router.loadStoreProducts(storeId: store!.id, params: params))
+    }
+    
+    func currentParams() -> Parameters {
+        return ["_start": currentPage, "_end": currentPage + kPageSize]
     }
     
     func setupTableView() {
@@ -101,7 +110,7 @@ class ProductsViewController: UIViewController,
     }
     
     func setup() {
-        tableView.register(UINib(nibName: "ProductViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: "ProductViewCell", bundle: nil), forCellReuseIdentifier: kCellIdentifier)
         
         if let store = store {
             navigationItem.title = store.name

@@ -11,8 +11,23 @@ import UIKit
 class MyWishesViewController: ProductsViewController {
     
     // MARK: - Override
+    
     override func currentEndpoint() -> Router {
-        return Router.loadWishlist()
+        let params = currentParams()
+        
+        return Router.loadWishlist(params: params)
+    }
+    
+    // MARK: - ProductViewCellDelegate
+    
+    func productViewCellDidDeleteWish(index: Int) {
+        products.remove(at: index)
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        tableView.endUpdates()
     }
     
 }

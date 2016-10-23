@@ -14,15 +14,10 @@ enum Router: URLRequestConvertible {
     case saveProductWish(productId: Int)
     case deleteProductWish(productId: Int)
     
-    case loadStores()
-    case loadStoreProducts(storeId: Int)
+    case loadStores(params: Parameters)
+    case loadStoreProducts(storeId: Int, params: Parameters)
     
-    case loadWishlist()
-    
-//    case createUser(parameters: Parameters)
-//    case readUser(username: String)
-//    case updateUser(username: String, parameters: Parameters)
-//    case destroyUser(username: String)
+    case loadWishlist(params: Parameters)
     
     static let baseURLString = "http://localhost:3000"
     
@@ -64,15 +59,6 @@ enum Router: URLRequestConvertible {
         // Wishlist
         case .loadWishlist:
             return "/wishlist"
-            
-//        case .createUser:
-//            return "/users"
-//        case .readUser(let username):
-//            return "/users/\(username)"
-//        case .updateUser(let username, _):
-//            return "/users/\(username)"
-//        case .destroyUser(let username):
-//            return "/users/\(username)"
         }
     }
     
@@ -92,18 +78,13 @@ enum Router: URLRequestConvertible {
         case .deleteProductWish:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
             
-        case .loadStores:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
-        case .loadStoreProducts:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+        case .loadStores(let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
+        case .loadStoreProducts(_, let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
             
-        case .loadWishlist:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
-            
-//        case .createUser(let parameters):
-//            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-//        case .updateUser(_, let parameters):
-//            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        case .loadWishlist(let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
         }
         
 //        urlRequest.addValue(<#T##value: String##String#>, forHTTPHeaderField: <#T##String#>)

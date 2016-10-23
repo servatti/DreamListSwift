@@ -13,6 +13,10 @@ import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
 
+@objc protocol ProductViewCellDelegate {
+    @objc optional func productViewCellDidDeleteWish(index: Int)
+}
+
 class ProductViewCell: UITableViewCell
 {
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,6 +28,7 @@ class ProductViewCell: UITableViewCell
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var product: ProductEntity?
+    var delegate: ProductViewCellDelegate?
     
     // MARK: - View Life Cycle
     override func awakeFromNib() {
@@ -83,7 +88,14 @@ class ProductViewCell: UITableViewCell
                 
                 switch response.result {
                 case .success:
-                    self.product!.wishes += 1
+                    self.product!.wishes = wishes
+                    
+                    // Calls delegate when it's toggling to not wished
+                    if self.product!.isWished {
+                        self.callDeleteDelegate()
+                    }
+                    
+                    self.product!.isWished = !self.product!.isWished
                     break
                     
                 case .failure(let error):
@@ -93,6 +105,10 @@ class ProductViewCell: UITableViewCell
                     break
                 }
         }
+    }
+    
+    func callDeleteDelegate() {
+        delegate?.productViewCellDidDeleteWish?(index: tag)
     }
     
     func openStoreURL() {
