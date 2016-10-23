@@ -13,12 +13,13 @@ class ProductEntity: NSObject, Mappable {
     var name: String?
     var vendor: String?
     var price: String?
-    var url: String?
+    var urlPath: String?
     var wishes: Int = 0
-    var imageURL: String?
+    var imageURLPath: String?
     var isWished: Bool = false
     
     // MARK: - Override
+    
     required init?(map: Map) {
     }
     
@@ -27,9 +28,31 @@ class ProductEntity: NSObject, Mappable {
         name <- map["name"]
         vendor <- map["vendor"]
         price <- map["price"]
-        url <- map["price"]
+        urlPath <- map["url"]
         wishes <- map["wishes"]
-        imageURL <- map["image_url"]
+        imageURLPath <- map["image_url"]
         isWished <- map["is_wished"]
+    }
+    
+    // MARK: - Expose
+    
+    func imageURL() -> URL? {
+        if let path = imageURLPath {
+            if let url = URL(string: path) {
+                return url
+            }
+        }
+        
+        return nil
+    }
+    
+    func url() -> URL? {
+        if let path = urlPath {
+            if let url = URL(string: path) {
+                return url
+            }
+        }
+        
+        return nil
     }
 }

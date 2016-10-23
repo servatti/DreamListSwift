@@ -21,6 +21,7 @@ class ProductViewCell: UITableViewCell
     @IBOutlet weak var wishButton: UIButton!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var product: ProductEntity?
     
@@ -45,8 +46,12 @@ class ProductViewCell: UITableViewCell
             priceLabel.isHidden = true
         }
         
-        if let imageURL = product.imageURL {
-            productImageView.sd_setImage(with: URL(string: imageURL))
+        if let imageURL = product.imageURL() {
+            spinner.startAnimating()
+            productImageView.sd_setImage(with: imageURL)
+        } else {
+            spinner.stopAnimating()
+            productImageView.image = nil
         }
         
         updateWishes(wishes: product.wishes, isWished: product.isWished)
@@ -56,6 +61,10 @@ class ProductViewCell: UITableViewCell
     
     @IBAction func wishesDidTap(sender: UIButton) {
         toogleWish()
+    }
+    
+    @IBAction func imageDidTap(sender: UIButton) {
+        openStoreURL()
     }
     
     // MARK: - Internal
@@ -83,6 +92,14 @@ class ProductViewCell: UITableViewCell
                     Manager.sharedInstance.showAlert(message: error.localizedDescription)
                     break
                 }
+        }
+    }
+    
+    func openStoreURL() {
+        if let url = product!.url() {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
     }
     

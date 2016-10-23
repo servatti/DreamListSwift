@@ -15,10 +15,17 @@
                 <frame key="frameInset" width="375" height="399"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="05U-bA-lI3">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="05U-bA-lI3">
                         <frame key="frameInset" minX="179" minY="174" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </activityIndicatorView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OH-KQ-Rfq">
+                        <frame key="frameInset" minX="16" minY="45" width="343" height="275"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <action selector="imageDidTapWithSender:" destination="mwE-RL-Vo5" eventType="touchUpInside" id="A6Y-kv-z2x"/>
+                        </connections>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ub5-1f-a3b">
                         <constraints>
                             <constraint firstAttribute="height" constant="275" id="ECT-cz-PTd"/>
@@ -95,6 +102,7 @@
                 <outlet property="nameLabel" destination="xO6-wF-b0N" id="BFx-IE-VZo"/>
                 <outlet property="priceLabel" destination="QjF-dp-ocn" id="ydJ-5P-91I"/>
                 <outlet property="productImageView" destination="ub5-1f-a3b" id="eR4-WW-4JR"/>
+                <outlet property="spinner" destination="05U-bA-lI3" id="Hcw-Md-bf9"/>
                 <outlet property="vendorLabel" destination="J6Z-MY-1dK" id="xZi-Xs-r9z"/>
                 <outlet property="wishButton" destination="TLq-ex-s64" id="Soi-4x-qgp"/>
                 <outlet property="wishesLabel" destination="yeh-8y-DKp" id="FWD-Te-JMW"/>

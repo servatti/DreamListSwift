@@ -18,8 +18,10 @@ class ProductsViewController: UIViewController,
     @IBOutlet weak var tableView: UITableView!
     
     let cellIdentifier = "ProductCell"
+    let kPageSize = 5
+    var currentPage = 0
     
-    var products: [ProductEntity]?
+    var products = [ProductEntity]()
     var store: StoreEntity?
     
     // MARK: - View Life Cycle
@@ -28,6 +30,7 @@ class ProductsViewController: UIViewController,
         super.viewDidLoad()
         
         setup()
+        setupTableView()
         
         loadProducts()
     }
@@ -36,7 +39,7 @@ class ProductsViewController: UIViewController,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ProductViewCell
-        let product = products![indexPath.row]
+        let product = products[indexPath.row]
         
         cell.setupCell(product: product)
         
@@ -44,7 +47,7 @@ class ProductsViewController: UIViewController,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products?.count ?? 0
+        return products.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,8 +68,9 @@ class ProductsViewController: UIViewController,
                 
                 switch response.result {
                 case .success(let value):
-                    self.products = value
+                    self.products.append(contentsOf: value)
                     self.tableView.reloadData()
+                    self.currentPage += self.kPageSize
                     break
                 case .failure(let error):
                     Manager.sharedInstance.showAlert(message: error.localizedDescription)
@@ -76,7 +80,24 @@ class ProductsViewController: UIViewController,
     }
     
     func currentEndpoint() -> Router {
-        return (store == nil ? Router.loadProducts() : Router.loadStoreProducts(storeId: store!.id))
+        return (store == nil ? Router.loadProducts(params: ["_start": currentPage, "_end": currentPage + kPageSize]) : Router.loadStoreProducts(storeId: store!.id))
+    }
+    
+    func setupTableView() {
+        tableView.infiniteScrollIndicatorStyle = .gray
+        tableView.infiniteScrollTriggerOffset = 1000
+        
+        tableView.addInfiniteScroll { (tableView) in
+            self.loadProducts()
+            
+            let indexPaths = [IndexPath]()
+            
+            tableView.beginUpdates()
+            tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+            tableView.endUpdates()
+            
+            tableView.finishInfiniteScroll()
+        }
     }
     
     func setup() {

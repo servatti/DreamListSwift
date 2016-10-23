@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 enum Router: URLRequestConvertible {
-    case loadProducts()
+    case loadProducts(params: Parameters)
     case saveProductWish(productId: Int)
     case deleteProductWish(productId: Int)
     
@@ -85,8 +85,8 @@ enum Router: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
-        case .loadProducts:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+        case .loadProducts(let params):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
         case .saveProductWish:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case .deleteProductWish:

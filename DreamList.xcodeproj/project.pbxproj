@@ -63,6 +63,7 @@
 		FEC67D6A1DBBBC9000E7AAAB /* StoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreEntity.swift; sourceTree = "<group>"; };
 		FEC67D6D1DBBCDFE00E7AAAB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FEC67D6F1DBBDEED00E7AAAB /* DreamList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DreamList.entitlements; sourceTree = "<group>"; };
+		FEC67D701DBC2EB100E7AAAB /* DreamList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DreamList-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +224,7 @@
 			children = (
 				FEC67D571DBB98A600E7AAAB /* Podfile */,
 				FEC67D041DBB1EC400E7AAAB /* Info.plist */,
+				FEC67D701DBC2EB100E7AAAB /* DreamList-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -591,6 +593,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vh.DreamList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DreamList/DreamList-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -606,6 +609,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.vh.DreamList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DreamList/DreamList-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
