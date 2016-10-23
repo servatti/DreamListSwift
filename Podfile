@@ -10,4 +10,5 @@ target 'DreamList' do
     pod 'FacebookLogin'
     pod 'FacebookShare'
     pod 'UIScrollView-InfiniteScroll'
+    pod 'NVActivityIndicatorView'
 end

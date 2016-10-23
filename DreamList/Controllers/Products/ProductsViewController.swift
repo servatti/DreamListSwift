@@ -24,6 +24,7 @@ class ProductsViewController: UIViewController,
     var currentPage = 0
     var products = [ProductEntity]()
     var store: StoreEntity?
+    var isFirstLoad = true
     
     // MARK: - View Life Cycle
     
@@ -65,10 +66,17 @@ class ProductsViewController: UIViewController,
     // MARK: - Internal
     
     func loadProducts() {
+        if isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: true) }
+        
         let endpoint = currentEndpoint()
         
         Alamofire.request(endpoint)
             .validate().responseArray { (response: DataResponse<[ProductEntity]>) in
+                
+                self.tableView.finishInfiniteScroll()
+                
+                if self.isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: false) }
+                self.isFirstLoad = false
                 
                 switch response.result {
                 case .success(let value):
@@ -95,17 +103,10 @@ class ProductsViewController: UIViewController,
     func setupTableView() {
         tableView.infiniteScrollIndicatorStyle = .gray
         tableView.infiniteScrollTriggerOffset = 1000
+        tableView.tableFooterView = UIView()
         
         tableView.addInfiniteScroll { (tableView) in
             self.loadProducts()
-            
-            let indexPaths = [IndexPath]()
-            
-            tableView.beginUpdates()
-            tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
-            tableView.endUpdates()
-            
-            tableView.finishInfiniteScroll()
         }
     }
     

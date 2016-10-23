@@ -19,7 +19,8 @@ enum Router: URLRequestConvertible {
     
     case loadWishlist(params: Parameters)
     
-    static let baseURLString = "http://localhost:3000"
+//    static let baseURLString = "http://localhost:3000"
+    static let baseURLString = "https://dream-list.herokuapp.com/api/v1"
     
     var method: HTTPMethod {
         switch self {
@@ -52,9 +53,9 @@ enum Router: URLRequestConvertible {
             
         // Stores
         case .loadStores:
-            return "/stores"
+            return "/shops"
         case .loadStoreProducts(let storeId):
-            return "/stores/\(storeId)/products"
+            return "/shops/\(storeId)/products"
             
         // Wishlist
         case .loadWishlist:

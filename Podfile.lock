@@ -28,6 +28,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.16.1):
     - FBSDKCoreKit
+  - NVActivityIndicatorView (3.0)
   - ObjectMapper (2.1.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - NVActivityIndicatorView
   - SDWebImage (~> 3.8)
   - UIScrollView-InfiniteScroll
 
@@ -53,10 +55,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
+  NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   UIScrollView-InfiniteScroll: 14e204c50ca4040467e1cbfa141dad7a18919b56
 
-PODFILE CHECKSUM: 975d111c0dee53dcdfc34055d334f668dfb50fd2
+PODFILE CHECKSUM: c7d68ba206f75f8f4c491df11cb799316323dd8b
 
 COCOAPODS: 1.1.1

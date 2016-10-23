@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import NVActivityIndicatorView
 
 class Manager {
 
@@ -37,4 +38,32 @@ class Manager {
     func showLoading(show: Bool) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = show
     }
+    
+    func showLoadingSpinner(show: Bool) {
+        showLoading(show: show)
+        
+        let tag = 500
+        let window = (UIApplication.shared.delegate as! AppDelegate).window!
+        
+        if let container = window.viewWithTag(tag) {
+            if (!show) {
+                container.removeFromSuperview()
+            }
+        } else {
+            if show {
+                let size = CGFloat(60)
+                let frame = CGRect(x: (UIScreen.main.bounds.width - size) / 2, y: (UIScreen.main.bounds.height - size) / 2, width: size, height: size)
+                let spinner = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballScaleMultiple, color: UIColor(red: 0, green: 191/255.0, blue: 136/255.0, alpha: 1), padding: 0)
+                spinner.startAnimating()
+                
+                let container = UIView(frame: UIScreen.main.bounds)
+                container.backgroundColor = UIColor(white: 0, alpha: 0.1)
+                container.addSubview(spinner)
+                container.tag = tag
+                
+                window.addSubview(container)
+            }
+        }
+    }
+    
 }

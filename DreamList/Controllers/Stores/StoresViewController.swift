@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
+import NVActivityIndicatorView
 
 class StoresViewController: UIViewController,
                             UITableViewDataSource,
@@ -23,6 +24,7 @@ class StoresViewController: UIViewController,
     
     var currentPage = 0
     var stores = [StoreEntity]()
+    var isFirstLoad = true
     
     // MARK: - View Life Cycle
     
@@ -68,9 +70,16 @@ class StoresViewController: UIViewController,
     // MARK: - Internal
     
     func loadStores() {
+        if isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: true) }
+        
         let params = currentParams()
         Alamofire.request(Router.loadStores(params: params))
             .validate().responseArray { (response: DataResponse<[StoreEntity]>) in
+                
+                self.tableView.finishInfiniteScroll()
+                
+                if self.isFirstLoad { Manager.sharedInstance.showLoadingSpinner(show: false) }
+                self.isFirstLoad = false
                 
                 switch response.result {
                 case .success(let value):
@@ -97,14 +106,6 @@ class StoresViewController: UIViewController,
         
         tableView.addInfiniteScroll { (tableView) in
             self.loadStores()
-            
-            let indexPaths = [IndexPath]()
-            
-            tableView.beginUpdates()
-            tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
-            tableView.endUpdates()
-            
-            tableView.finishInfiniteScroll()
         }
     }
     
